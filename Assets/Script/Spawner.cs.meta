@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: db7619102548d4a44a6a8580f91b2fc8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - DangerGameObject: {fileID: 1163116963647868, guid: 607888ea72115a149a9ddf3e7bfd0639,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
