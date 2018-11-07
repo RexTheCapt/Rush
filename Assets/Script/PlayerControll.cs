@@ -15,6 +15,10 @@ public class PlayerControll : MonoBehaviour
             if (_health > value)
             {
                 damageFlash = true;
+
+                AudioSource a = gameObject.GetComponent<AudioSource>();
+                a.clip = damageAudioClip;
+                a.Play();
             }
 
             _health = value;
@@ -22,6 +26,9 @@ public class PlayerControll : MonoBehaviour
     }
     [SerializeField]
     private int _health = 3;
+
+    [Header("Sounds")]
+    public AudioClip damageAudioClip;
 
     [Header("Game objects")]
     public GameObject SpawnControllerGameObject;
