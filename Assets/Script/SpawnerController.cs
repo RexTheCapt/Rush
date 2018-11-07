@@ -167,8 +167,15 @@ public class SpawnerController : MonoBehaviour {
 	    {
 	        foreach (GameObject o in dangerObjects)
             {
-                o.GetComponent<Danger>().speed = 0f;
-                dangerCurrentSpeed = 0f;
+                try
+                {
+                    o.GetComponent<Danger>().speed = 0f;
+                    dangerCurrentSpeed = 0f;
+                }
+                catch
+                {
+                    dangerObjects.Remove(o);
+                }
             }
         }
 	}
@@ -205,6 +212,16 @@ public class SpawnerController : MonoBehaviour {
         {
             PlayerPrefs.SetInt("HighScore", waveCleared);
             PlayerPrefs.Save();
+        }
+    }
+
+    public void WaveReset(GameObject danger)
+    {
+        waveSpawned = danger.GetComponent<Danger>().wave - 1;
+
+        foreach (GameObject o in dangerObjects)
+        {
+            Destroy(o);
         }
     }
 }

@@ -152,6 +152,8 @@ public class PlayerControll : MonoBehaviour
                         transform.localPosition.y,
                         0);
                 }
+
+                SpawnControllerGameObject.GetComponent<SpawnerController>().WaveReset(collision.gameObject);
             }
         }
 
