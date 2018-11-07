@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class PlayerControll : MonoBehaviour
 {
-    public GameObject SpawnControllerGameObject;
-    public GameObject HealthDisplayGameObject;
     public bool invincible = false;
     public int Health
     {
@@ -22,15 +20,25 @@ public class PlayerControll : MonoBehaviour
             _health = value;
         }
     }
+    [SerializeField]
+    private int _health = 3;
 
-    [Header("Damage")]
+    [Header("Game objects")]
+    public GameObject SpawnControllerGameObject;
+    public GameObject HealthDisplayGameObject;
+
+    [Header("Score table options")]
+    public GameObject ScoreTableGameObject;
+    public bool enableScoreTable = true;
+
+    [Header("Damage light effect")]
     public GameObject DamageLightGameObject;
     public bool damageFlash = false;
     public float damageTimer;
     public float damageTimerMax = 0.5f;
 
-    [SerializeField]
-    private int _health = 3;
+    [Header("Player lights")]
+    public Light[] PlayerLight;
 
     private bool PlayerIsDead
     {
@@ -40,13 +48,16 @@ public class PlayerControll : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        ScoreTableGameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         HealthDisplayGameObject.GetComponent<TextMeshPro>().text = Health.ToString("00");
+
+        if (Health < 0)
+            Health = 0;
 
         if (damageFlash)
         {
@@ -99,7 +110,18 @@ public class PlayerControll : MonoBehaviour
                 gameObject.transform.localScale.z - Time.deltaTime);
 
             if (gameObject.transform.localScale.z < 0)
+            {
                 gameObject.transform.localScale = new Vector3(0, 0, 0);
+                ScoreTableGameObject.SetActive(enableScoreTable);
+            }
+
+            foreach (Light l in PlayerLight)
+            {
+                l.intensity -= Time.deltaTime;
+
+                if (l.intensity < 0)
+                    l.intensity = 0;
+            }
         }
     }
 
@@ -121,7 +143,7 @@ public class PlayerControll : MonoBehaviour
             }
         }
 
-        if(Health <= 0)
+        if (Health <= 0)
             SpawnControllerGameObject.GetComponent<SpawnerController>().PlayerDead();
     }
 }
