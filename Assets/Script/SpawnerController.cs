@@ -47,6 +47,12 @@ public class SpawnerController : MonoBehaviour {
     private int _waveClearedPrev;
     public int waveLock;
 
+    [Header("Powerup settings")]
+    [Range(0f,1f)]
+    public float spawnChance = 0.5f;
+    public bool forceSpawnPowerup = false;
+    public GameObject[] PowerupGameObject;
+
     [Header("Overrides")]
     public bool OverrideScore = false;
     public int OverrideScoreSet = 0;
@@ -148,6 +154,13 @@ public class SpawnerController : MonoBehaviour {
 
                 // Reset spawn timer to 0
                 SpawnTimer = 0f;
+
+                if ((float) rdm.Next(0, 10000) / 10000 > spawnChance || forceSpawnPowerup)
+                {
+                    forceSpawnPowerup = false;
+                    GameObject power = Instantiate(PowerupGameObject[rdm.Next(0, PowerupGameObject.Length)]);
+                    power.transform.position = PlayerGameObject.transform.position + new Vector3(-80, 0, 0);
+                }
             }
 
             for (int i = dangerObjects.Count - 1; i > -1; i--)

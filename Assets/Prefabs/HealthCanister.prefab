@@ -9,47 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1163116963647868}
+  m_RootGameObject: {fileID: 1811655858821816}
   m_IsPrefabAsset: 1
---- !u!1 &1163116963647868
+--- !u!1 &1811655858821816
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4426968814536872}
-  - component: {fileID: 33411298108814730}
-  - component: {fileID: 23876611943138886}
-  - component: {fileID: 65373468291736028}
-  - component: {fileID: 114340593612508866}
-  - component: {fileID: 54388161866469624}
-  m_Layer: 14
-  m_Name: Movers
-  m_TagString: Danger
+  - component: {fileID: 4581467882291576}
+  - component: {fileID: 33883543810649776}
+  - component: {fileID: 23816598876431074}
+  - component: {fileID: 65752791240022880}
+  - component: {fileID: 114988760573441832}
+  - component: {fileID: 54804672131278202}
+  m_Layer: 0
+  m_Name: HealthCanister
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4426968814536872
+--- !u!4 &4581467882291576
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1163116963647868}
+  m_GameObject: {fileID: 1811655858821816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1999207, y: 2, z: 1.885601}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalPosition: {x: 7, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23876611943138886
+--- !u!23 &23816598876431074
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1163116963647868}
+  m_GameObject: {fileID: 1811655858821816}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 651d38d6857af664290b4135c8dec4eb, type: 2}
+  - {fileID: 2100000, guid: bca433642c2dc5241979b771fd5a3013, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,19 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33411298108814730
+--- !u!33 &33883543810649776
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1163116963647868}
+  m_GameObject: {fileID: 1811655858821816}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54388161866469624
+--- !u!54 &54804672131278202
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1163116963647868}
+  m_GameObject: {fileID: 1811655858821816}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -101,31 +101,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
---- !u!65 &65373468291736028
+--- !u!65 &65752791240022880
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1163116963647868}
+  m_GameObject: {fileID: 1811655858821816}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.5}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114340593612508866
+--- !u!114 &114988760573441832
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1163116963647868}
+  m_GameObject: {fileID: 1811655858821816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a96f17732ffbe14ab7ef97deff77b8f, type: 3}
+  m_Script: {fileID: 11500000, guid: e3fe893a2875b5645a855c90e1b7af52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Material: {fileID: 2100000, guid: cd5e9f42aed6f3043b23ad164d478638, type: 2}
-  SpawnControllerGameObject: {fileID: 0}
-  speed: 1
-  destructAt: 10
-  wave: 25
+  speed: 5
+  Materials:
+  - {fileID: 2100000, guid: bca433642c2dc5241979b771fd5a3013, type: 2}
+  - {fileID: 2100000, guid: 46e6fec799d772f429f9c64f35e9f966, type: 2}

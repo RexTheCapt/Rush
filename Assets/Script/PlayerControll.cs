@@ -87,10 +87,17 @@ public class PlayerControll : MonoBehaviour
         if (!PlayerIsDead)
         {
             Vector3 move = Vector3.zero;
-            if (Input.GetKeyDown(KeyCode.A))
+
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 move.z = -1;
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 move.z = 1;
+            /*
+            if (Input.GetKeyDown(KeyCode.W))
+                move.x = -1;
+            if (Input.GetKeyDown(KeyCode.S))
+                move.x = 1;
+                */
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
                 gameObject.transform.localPosition = new Vector3(47.1f, 1, -3);
