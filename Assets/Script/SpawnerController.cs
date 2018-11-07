@@ -11,8 +11,13 @@ public class SpawnerController : MonoBehaviour {
     private System.Random rdm = new System.Random();
     private List<GameObject> dangerObjects = new List<GameObject>();
     private List<GameObject> spawnerGameObjects = new List<GameObject>();
+    private AudioSource Audio
+    {
+        get { return PlayerGameObject.GetComponent<AudioSource>(); }
+    }
 
     public bool playerIsDead = false;
+    public AudioClip WaveClearedAudioClip;
 
     [Header("Game Objects")]
     public GameObject PlayerGameObject;
@@ -38,6 +43,7 @@ public class SpawnerController : MonoBehaviour {
     public bool waveReset = false;
     public int waveSpawned;
     public int waveCleared;
+    private int _waveClearedPrev;
     public int waveLock;
 
     [Header("Overrides")]
@@ -90,9 +96,16 @@ public class SpawnerController : MonoBehaviour {
 
             #region Update text display
 
-	        CurrentScoreGameObject.GetComponent<TextMeshPro>().text = waveCleared.ToString("00");
+	        if (_waveClearedPrev < waveCleared)
+	        {
+	            Audio.clip = WaveClearedAudioClip;
+                Audio.Play();
+	        }
 
-	        #endregion
+	        CurrentScoreGameObject.GetComponent<TextMeshPro>().text = waveCleared.ToString("00");
+	        _waveClearedPrev = waveCleared;
+
+            #endregion
 
             if (activeSpawners > maxActiveSpawners)
                 activeSpawners = maxActiveSpawners;

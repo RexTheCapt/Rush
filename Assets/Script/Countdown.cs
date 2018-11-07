@@ -11,6 +11,10 @@ public class Countdown : MonoBehaviour
     public Material RedMaterial;
     public Material GreenMaterial;
 
+    [Header("Sounds")]
+    public AudioClip ShortClip;
+    public AudioClip LongClip;
+
     private PlayerControll Player
     {
         get { return PlayerGameObject.GetComponent<PlayerControll>(); }
@@ -22,6 +26,15 @@ public class Countdown : MonoBehaviour
     }
 
     private float timer;
+
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
+    private AudioSource Audio
+    {
+        get { return gameObject.GetComponent<AudioSource>(); }
+    }
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
+
+    private readonly bool[] stagePlayBools = new[] {false, false, false};
 
 
     // Use this for initialization
@@ -50,17 +63,36 @@ public class Countdown : MonoBehaviour
             {
                 o.GetComponent<Renderer>().material = GreenMaterial;
             }
+
+            if (!stagePlayBools[2])
+            {
+                PlaySound(true);
+                stagePlayBools[2] = true;
+            }
         }
         else if (timer > 2)
         {
             CountGameObjects[1].SetActive(true);
+
+            if (!stagePlayBools[1])
+            {
+                PlaySound();
+                stagePlayBools[1] = true;
+            }
         }
         else if (timer > 1)
         {
             CountGameObjects[0].SetActive(true);
+
             foreach (GameObject o in CubesGameObjects)
             {
                 o.GetComponent<Renderer>().material = RedMaterial;
+            }
+
+            if (!stagePlayBools[0])
+            {
+                PlaySound();
+                stagePlayBools[0] = true;
             }
         }
     }
@@ -68,5 +100,19 @@ public class Countdown : MonoBehaviour
     void FixedUpdate()
     {
         Controller.SpawnTimer = 0;
+    }
+
+    void PlaySound(bool longSound = false)
+    {
+        if (longSound)
+        {
+            Audio.clip = LongClip;
+        }
+        else
+        {
+            Audio.clip = ShortClip;
+        }
+
+        Audio.Play();
     }
 }
