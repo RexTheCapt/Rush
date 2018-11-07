@@ -13,6 +13,11 @@ public class Spawner : MonoBehaviour
     }
     public float lastSpawnTime;
 
+    private Vector3 SpawnOffset
+    {
+        get { return Spawner0GameObject.GetComponent<SpawnerController>().spawnOffset; }
+    }
+
 	// Use this for initialization
 	void Start () {
 		Spawner0GameObject.GetComponent<SpawnerController>().RegisterSpawner(gameObject);
@@ -28,7 +33,7 @@ public class Spawner : MonoBehaviour
     {
         GameObject spawnGameObject = Instantiate(DangerGameObject);
 
-        spawnGameObject.transform.position = gameObject.transform.position;
+        spawnGameObject.transform.position = gameObject.transform.position + SpawnOffset;
         spawnGameObject.gameObject.GetComponent<Danger>().SpawnControllerGameObject = Spawner0GameObject;
         spawnGameObject.gameObject.GetComponent<Danger>().wave = wave;
 

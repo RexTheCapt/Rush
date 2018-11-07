@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControll : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class PlayerControll : MonoBehaviour
     }
     [SerializeField]
     private int _health = 3;
+    public KeyCode resetKey;
 
     [Header("Sounds")]
     public AudioClip damageAudioClip;
@@ -130,6 +132,9 @@ public class PlayerControll : MonoBehaviour
                     l.intensity = 0;
             }
         }
+
+        if (Input.GetKeyDown(resetKey))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OnCollisionEnter(Collision collision)

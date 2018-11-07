@@ -25,6 +25,7 @@ public class SpawnerController : MonoBehaviour {
     public GameObject CurrentScoreGameObject;
 
     [Header("Spawn settings")]
+    public Vector3 spawnOffset;
     public float SpawnTimer;
     public float spawnBaseRate = 5f;
     public float spawnRateModifier = 1000f;

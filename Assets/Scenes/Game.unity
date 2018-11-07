@@ -1875,6 +1875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invincible: 0
   _health: 3
+  resetKey: 114
   damageAudioClip: {fileID: 8300000, guid: be8756b45edda7e4a97864200948d581, type: 3}
   SpawnControllerGameObject: {fileID: 1121242771}
   HealthDisplayGameObject: {fileID: 2144108363}
@@ -3429,6 +3430,7 @@ MonoBehaviour:
   PlayerGameObject: {fileID: 676059841}
   HighScoreGameObject: {fileID: 420022148}
   CurrentScoreGameObject: {fileID: 1243794966}
+  spawnOffset: {x: -10, y: 0, z: 0}
   SpawnTimer: 0
   spawnBaseRate: 5
   spawnRateModifier: 7.5
@@ -3439,7 +3441,7 @@ MonoBehaviour:
   dangerBaseSpeed: 20
   dangerSpeedModifier: 7.5
   dangerCurrentSpeed: 0
-  dangerDestructAt: 1
+  dangerDestructAt: 15
   waveReset: 0
   waveSpawned: 0
   waveCleared: 0
